@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewDelegate {
     
@@ -21,8 +22,6 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
             amountLabel.text = amountPrefix + amountString
             
             adjustFontSize(for: amountLabel)
-
-            
         }
         
         willSet {
@@ -61,6 +60,11 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //UserDefaults.standard.set(false, forKey: "DataInitialized")
+        DataInitializer.initializeDataIfNeeded()
+        //print("User Realm User file location: \(Realm.Configuration.defaultConfiguration.fileURL)")
+        //print(UIColor.systemBlue.toHexString)
         
         keboardCollectionView.keyboardPadCollectionViewDelegate = self
         setupUI()
@@ -113,9 +117,22 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
     }
     
     @IBAction func choseAccountButtonClick(_ sender: Any) {
-        choseAccountButton.setTitle("As", for: .normal)
-        amountString = "0"
-        amountLabel.text = amountString
+        let accountsVC = ListAccountsViewController()
+        let navigationVC = UINavigationController(rootViewController: accountsVC)
+        
+        if let sheet = navigationVC.sheetPresentationController {
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.large(), .custom(resolver: { context in
+                    370
+                })]
+            } else {
+                sheet.detents = [.large()]
+            }
+            
+            navigationVC.sheetPresentationController?.preferredCornerRadius = 30
+        }
+        
+        navigationController?.present(navigationVC, animated: true)
     }
     
     func didSelectItem(withTitle title: String) {
