@@ -1,13 +1,13 @@
 //
-//  AccountsViewController.swift
+//  AccountViewController.swift
 //  diplom
 //
-//  Created by Dulin Gleb on 1.2.24..
+//  Created by Dulin Gleb on 2.2.24..
 //
 
 import UIKit
 
-class AccountsViewController: UIViewController {
+class AccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
