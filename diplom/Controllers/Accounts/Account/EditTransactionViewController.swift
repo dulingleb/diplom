@@ -1,13 +1,13 @@
 //
-//  CreateExpenseCategoryViewController.swift
+//  EditTransactionViewController.swift
 //  diplom
 //
-//  Created by Dulin Gleb on 31.1.24..
+//  Created by Dulin Gleb on 6.2.24..
 //
 
 import UIKit
 
-class CreateExpenseCategoryViewController: UIViewController {
+class EditTransactionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
