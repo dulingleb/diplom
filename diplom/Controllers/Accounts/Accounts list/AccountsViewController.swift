@@ -20,8 +20,7 @@ class AccountsViewController: UIViewController, UICollectionViewDataSource, UICo
         
         setupCollectionView()
         
-        let realm = try! Realm()
-        accounts = Array(realm.objects(Account.self))
+        accounts = Array(StorageManager.shared.getAccounts())
         collectionView.reloadData()
     }
     
@@ -48,8 +47,7 @@ class AccountsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let realm = try! Realm()
-        accounts = Array(realm.objects(Account.self))
+        accounts = Array(StorageManager.shared.getAccounts())
         collectionView.reloadData()
     }
     
@@ -61,16 +59,21 @@ class AccountsViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountsCollectionViewCell.reuseId, for: indexPath) as! AccountsCollectionViewCell
         
         let item = accounts[indexPath.item]
-        print(item)
+
         cell.config(
             name: item.name,
-            amount: String(format: "%.0f", item.balance),
+            amount: item.getCurrentBalance().withCommas(),
             symbol: item.currency?.symbol ?? "$",
             icon: item.iconName,
             iconColor: UIColor(hexString: item.iconColor)
         )
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let accountVC = AccountViewController(account: accounts[indexPath.item])
+        self.navigationController?.pushViewController(accountVC, animated: true)
     }
 
 }

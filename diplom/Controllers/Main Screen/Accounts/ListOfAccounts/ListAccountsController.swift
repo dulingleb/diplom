@@ -11,25 +11,27 @@ import RealmSwift
 class ListAccountsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tableView: UITableView!
     
-    let accounts: [Account] = {
-        do {
-            let realm = try Realm()
-            let accounts = realm.objects(Account.self)
-            return Array(accounts)
-        } catch {
-            print("Failed to access Realm: \(error)")
-            return []
+    var accounts: [Account] = [] {
+        didSet{
+            guard let tableView = tableView else { return }
+            
+            let tableHeight = CGFloat((accounts.count + 1) * 44)
+            
+            tableView.frame = CGRect(
+                x: 16,
+                y: navigationController?.navigationBar.frame.height ?? 0,
+                width: view.bounds.width - 32,
+                height: self.view.frame.size.height > tableHeight ? tableHeight : self.view.frame.size.height - (navigationController?.navigationBar.frame.size.height ?? 0) - 50
+            )
         }
-    }()
+    }
+    
+    var onAccountSelect: ((Account) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        let tableHeight = CGFloat((accounts.count + 1) * 44)
-        
-        tableView = UITableView(frame: CGRect(x: 16, y: navigationController?.navigationBar.frame.height ?? 0, width: view.bounds.width - 32, height: self.view.frame.size.height > tableHeight ? tableHeight : self.view.frame.size.height - (navigationController?.navigationBar.frame.size.height ?? 0) - 50))
-        
-        tableView.tableHeaderView = UIView()
+        tableView = UITableView(frame: .zero)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -46,6 +48,8 @@ class ListAccountsViewController: UIViewController, UITableViewDataSource, UITab
         view.backgroundColor = .secondarySystemBackground
         
         title = "Choose Account"
+        
+        accounts = Array(StorageManager.shared.getAccounts())
         
         navigationItemSetup()
     }
@@ -75,7 +79,7 @@ class ListAccountsViewController: UIViewController, UITableViewDataSource, UITab
             cell.iconImageView.image = UIImage(named: accounts[indexPath.row].iconName)
             cell.iconImageView.tintColor = UIColor(hexString: accounts[indexPath.row].iconColor)
             cell.titleLabel.text = accounts[indexPath.row].name
-            print(accounts[indexPath.row].iconColor)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 52, bottom: 0, right: 16)
         } else {
             cell.iconImageView.image = UIImage(systemName: "plus.circle")
             cell.titleLabel.text = "Create new"
@@ -88,7 +92,10 @@ class ListAccountsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+        if indexPath.row < accounts.count {
+            onAccountSelect?(accounts[indexPath.row])
+            dismiss(animated: true)
+        } else {
             tableView.deselectRow(at: indexPath, animated: true)
             
             let createAccountVC = CreateAccountViewController()
@@ -103,10 +110,16 @@ class ListAccountsViewController: UIViewController, UITableViewDataSource, UITab
                 
                 navigationVC.sheetPresentationController?.preferredCornerRadius = 30
             }
+            createAccountVC.accountCallback = { [weak self] account in
+                self?.accounts.append(account)
+                self?.tableView.reloadData()
+            }
             
             navigationController?.present(navigationVC, animated: true)
         }
     }
+    
+    
 
     @objc func closeTapped() {
         dismiss(animated: true)

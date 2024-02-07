@@ -8,18 +8,29 @@
 import UIKit
 
 protocol MonthPickerViewDelegate: AnyObject {
-    func didPickMonthYear(month: Int, year: Int)
+    func didPickMonthYear(date: Date)
 }
 
 class MonthYearSelector: UIView {
+    private var currentDate: Date = Date()
     private var currentMonthYear: DateComponents = {
         let components = Calendar.current.dateComponents([.year, .month], from: Date())
         return components
-    }()
+    }() {
+        didSet {
+            if currentMonthYear == Calendar.current.dateComponents([.year, .month], from: Date()) {
+                nextButton.isEnabled = false
+            } else {
+                nextButton.isEnabled = true
+            }
+        }
+    }
     
     private let monthYearLabel = UILabel()
     private let prevButton = UIButton(type: .system)
     private let nextButton = UIButton(type: .system)
+    
+    weak var delegate: MonthPickerViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,17 +45,20 @@ class MonthYearSelector: UIView {
     }
     
     private func setupViews() {
-        prevButton.setTitle("<", for: .normal)
+        prevButton.setImage(UIImage(named: "arrow.left"), for: .normal)
+        prevButton.translatesAutoresizingMaskIntoConstraints = false
         prevButton.addTarget(self, action: #selector(prevMonth), for: .touchUpInside)
         
-        nextButton.setTitle(">", for: .normal)
+        nextButton.setImage(UIImage(named: "arrow.right"), for: .normal)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.isEnabled = false
         nextButton.addTarget(self, action: #selector(nextMonth), for: .touchUpInside)
         
         monthYearLabel.textAlignment = .center
         
         let stackView = UIStackView(arrangedSubviews: [prevButton, monthYearLabel, nextButton])
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
         
@@ -52,7 +66,10 @@ class MonthYearSelector: UIView {
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            prevButton.widthAnchor.constraint(equalToConstant: 20),
+            nextButton.widthAnchor.constraint(equalToConstant: 20),
         ])
     }
     
@@ -65,14 +82,19 @@ class MonthYearSelector: UIView {
     }
     
     @objc private func prevMonth() {
-        guard let newDate = Calendar.current.date(byAdding: .month, value: -1, to: Calendar.current.date(from: currentMonthYear)!) else { return }
+        guard let newDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) else { return }
+        currentDate = newDate.startOfMonth
         currentMonthYear = Calendar.current.dateComponents([.year, .month], from: newDate)
         updateLabel()
+        self.delegate?.didPickMonthYear(date: currentDate)
     }
     
     @objc private func nextMonth() {
-        guard let newDate = Calendar.current.date(byAdding: .month, value: 1, to: Calendar.current.date(from: currentMonthYear)!) else { return }
+        guard let newDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) else { return }
+        currentDate = newDate.startOfMonth
         currentMonthYear = Calendar.current.dateComponents([.year, .month], from: newDate)
         updateLabel()
+        
+        self.delegate?.didPickMonthYear(date: currentDate)
     }
 }

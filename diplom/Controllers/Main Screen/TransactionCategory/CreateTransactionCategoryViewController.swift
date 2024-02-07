@@ -47,7 +47,7 @@ class CreateTransactionCategoryViewController: UIViewController, UITextFieldDele
     }
     
     private func uiSetup() {
-        self.title = "New Expense Category"
+        self.title = "New \(type.rawValue) Category"
         view.backgroundColor = .secondarySystemBackground
         
         // Название счета

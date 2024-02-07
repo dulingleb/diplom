@@ -8,8 +8,8 @@
 import UIKit
 
 protocol KeyboardPadCollectionViewDelegate: AnyObject {
-    func didSelectItem(withTitle title: String)
-    func didBackspace()
+    func didPressNumberButton(withTitle title: String)
+    func didPressBackspace()
 }
 
 enum KeyboardButtonType {
@@ -55,9 +55,9 @@ class KeyboardPadCollectionView: UICollectionView, UICollectionViewDataSource, U
         let selectedTitle = cell?.textLabel.text
         
         if cell?.keyboardButtonType == .digit {
-            keyboardPadCollectionViewDelegate?.didSelectItem(withTitle: selectedTitle ?? "")
+            keyboardPadCollectionViewDelegate?.didPressNumberButton(withTitle: selectedTitle ?? "")
         } else if cell? .keyboardButtonType == .backspace {
-            keyboardPadCollectionViewDelegate?.didBackspace()
+            keyboardPadCollectionViewDelegate?.didPressBackspace()
         }
         
     }

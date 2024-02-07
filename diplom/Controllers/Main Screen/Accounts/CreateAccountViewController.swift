@@ -18,6 +18,7 @@ protocol IconsSelectionDelegate: AnyObject {
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, CurrencySelectionDelegate, IconsSelectionDelegate, SettingNumberTextFieldDelegate {
     
+    
     private let accountNameTF: UITextField = {
         let accountTF = UITextField()
         accountTF.placeholder = "Account Name"
@@ -38,13 +39,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         return table
     }()
     
-    private var balance: Int = 0
+    private var balance: Double = 0
     
     let saveButton = SaveButton()
+    var accountCallback: ((Account) -> Void)?
     
     private let iconView = AccountIconContainer()
     private var iconName: String?
-    private var iconColor: UIColor?
+    private var iconColor: UIColor = .systemOrange
     
     private var currency: Currency! {
         didSet {
@@ -71,14 +73,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
             .staticCell(model: SettingOption(title: "Currency", info: "$ - USD", handler: {
                     self.currencyCellHandler()
                 })),
-            .numberCell(model: SettingNumberOption(title: "Balance", number: nil) {
-                print("hren")
-            })
+            .numberCell(model: SettingNumberOption(title: "Balance", number: nil))
         ]
         
-        let realm = try! Realm()
+        
         let currencyCode = "USD"
-        if let currency = realm.objects(Currency.self).filter("code == %@", currencyCode).first {
+        if let currency = StorageManager.shared.getCurrencies().filter("code == %@", currencyCode).first {
             self.currency = currency
         } else {
             print("Валюта с кодом \(currencyCode) не найдена.")
@@ -101,9 +101,17 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         
         // Icon
         view.addSubview(iconView)
-        iconView.configure(name: "wallet", color: .systemOrange)
+        iconView.configure(name: "wallet", color: self.iconColor)
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openChooseIcon)))
+        
+        let choseIconLabel = UILabel()
+        choseIconLabel.text = "Change icon"
+        choseIconLabel.font = UIFont.systemFont(ofSize: 12)
+        choseIconLabel.textColor = UIColor(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)
+        choseIconLabel.textAlignment = .center
+        choseIconLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(choseIconLabel)
         
         // Таблица настроек
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +123,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         NSLayoutConstraint.activate([
             accountNameTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             accountNameTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            accountNameTF.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            accountNameTF.topAnchor.constraint(equalTo: view.topAnchor, constant: topBarHeight),
             accountNameTF.heightAnchor.constraint(equalToConstant: 40),
             
             iconView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -123,9 +131,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
             iconView.heightAnchor.constraint(equalToConstant: 100),
             iconView.widthAnchor.constraint(equalToConstant: 100),
             
+            choseIconLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 8),
+            choseIconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            tableView.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 36),
+            tableView.topAnchor.constraint(equalTo: choseIconLabel.bottomAnchor, constant: 36),
             tableView.heightAnchor.constraint(equalToConstant: 88)
         ])
     }
@@ -166,7 +177,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
             ) as? SettingNumberTableViewCell else {
                 return UITableViewCell()
             }
-            
+            cell.numberTFDelegate = self
             cell.configure(with: model)
             return cell
         }
@@ -179,8 +190,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         switch type.self {
         case .staticCell(let model):
             model.handler()
-        case .switchCell(let model): break
-        case .numberCell(let model): break
+        case .switchCell(_): break
+        case .numberCell(_): break
             
         }
     }
@@ -218,7 +229,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         self.iconView.configure(name: iconName, color: color)
     }
     
-    func settingNumberTextFieldDidChange(_ number: Int) {
+    func settingNumberTextFieldDidChange(_ number: Double) {
         self.balance = number
     }
     
@@ -246,20 +257,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         account.name = accountNameTF.text ?? "New account"
         account.currency = self.currency
         account.iconName = self.iconName ?? "wallet"
-        account.iconColor = self.iconColor?.toHexString ?? "000000"
-        account.balance = Double(balance)
+        account.iconColor = self.iconColor.toHexString
+        account.balance = Double(self.balance)
         
-        let realm = try! Realm()
-        // Open a thread-safe transaction.
-        try! realm.write {
-            // Add the instance to the realm.
-            realm.add(account)
-        }
+        StorageManager.shared.addAccount(account)
         
-        print("\(account)")
-        dismiss(animated: true) {
-            <#code#>
-        }
+        accountCallback?(account)
+        dismiss(animated: true)
     }
     
     @objc func closeButtonTapped() {

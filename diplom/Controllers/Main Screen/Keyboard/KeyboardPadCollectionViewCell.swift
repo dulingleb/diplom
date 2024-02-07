@@ -20,6 +20,7 @@ class KeyboardPadCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let iv = UIImageView()
+        iv.tintColor = .black
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()

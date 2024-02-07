@@ -57,7 +57,7 @@ class ChoseIconViewController: UIViewController, ColorCollectionViewDelegate, Ic
         colorsCollectionView.backgroundColor = view.backgroundColor
         view.addSubview(colorsCollectionView)
         
-        let colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.systemRed, UIColor.systemBlue, UIColor.systemCyan, UIColor.systemFill, UIColor.systemGray, UIColor.systemOrange]
+        let colors: [UIColor] = [.systemPink, .systemRed, .systemOrange, UIColor(red: 1, green: 0.77, blue: 0, alpha: 1), .systemGreen, .systemTeal, .systemBlue, .systemIndigo, .systemPurple, .systemGray, .black]
         colorsDataSource = ColorCollectionViewDataSource(colors: colors)
         colorsCollectionView.dataSource = colorsDataSource
         colorsCollectionView.delegate = colorsDataSource
@@ -84,10 +84,10 @@ class ChoseIconViewController: UIViewController, ColorCollectionViewDelegate, Ic
         
         let icons = [
             IconSection(title: "Standart", icons: [
-                Icon(name: "wallet"), Icon(name: "banknote"), Icon(name: "wallet"), Icon(name: "banknote"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet")
+                Icon(name: "wallet"), Icon(name: "banknote"), Icon(name: "accounts"), Icon(name: "briefcase"), Icon(name: "Barbell"), Icon(name: "Bathtub"), Icon(name: "FirstAid"), Icon(name: "HouseLine"), Icon(name: "Popcorn"), Icon(name: "Receipt"), Icon(name: "ShoppingCartSimple"), Icon(name: "Train"),
             ]),
-            IconSection(title: "Companies", icons: [
-                Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet"), Icon(name: "wallet")
+            IconSection(title: "Brands", icons: [
+                Icon(name: "AndroidLogo"), Icon(name: "AppleLogo"), Icon(name: "GithubLogo"), Icon(name: "PinterestLogo"), Icon(name: "SketchLogo"), Icon(name: "TwitterLogo"), Icon(name: "WhatsappLogo"), Icon(name: "WindowsLogo"), Icon(name: "YoutubeLogo"),
             ])
         ]
         
