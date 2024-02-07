@@ -31,12 +31,8 @@ class CurrenciesTableViewController: UITableViewController, UISearchResultsUpdat
         
         tableView.register(CurrenciesTableViewCell.self, forCellReuseIdentifier: CurrenciesTableViewCell.reuseId)
 
-        do {
-            let realm = try Realm()
-            currencies = realm.objects(Currency.self).sorted(byKeyPath: "code", ascending: false)
-        } catch {
-            print("Failed to access Realm: \(error)")
-        }
+        currencies = StorageManager.shared.getCurrencies().sorted(byKeyPath: "code", ascending: false)
+
         
         setupSections(with: Array(currencies))
         

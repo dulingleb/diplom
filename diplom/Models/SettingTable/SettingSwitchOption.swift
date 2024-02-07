@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import UIKit
+
+struct SettingSwitchOption {
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    let isOn: Bool
+}

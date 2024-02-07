@@ -78,6 +78,6 @@ class IconCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50) // Например, высота 50
+        return CGSize(width: collectionView.frame.width, height: 50)
     }
 }

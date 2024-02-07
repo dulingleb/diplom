@@ -26,9 +26,7 @@ class CloseButton: UIButton {
         if let image = UIImage(systemName: "xmark") {
             let newSize = CGSize(width: 12, height: 12) // Новый размер изображения
             let scaledImage = image.resized(to: newSize)?
-                .withTintColor(UIColor(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6)) // Изменяем размер изображения и цвет
-            
-
+                .withTintColor(UIColor(red: 0.24, green: 0.24, blue: 0.26, alpha: 0.6))
             setImage(scaledImage, for: .normal) // Устанавливаем изображение на кнопку
         }
         

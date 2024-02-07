@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import UIKit
+
+extension UILabel {
+    func getTextSize() -> CGSize {
+        let textSize: CGSize
+        if let text = self.text {
+            let attributes: [NSAttributedString.Key: Any] = [.font: self.font]
+            textSize = text.size(withAttributes: attributes)
+        } else {
+            textSize = .zero // Текст отсутствует, поэтому размер равен нулю
+        }
+        
+        return textSize
+    }
+}

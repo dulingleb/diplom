@@ -10,20 +10,24 @@ import UIKit
 @IBDesignable
 class ChoseAccountButton: UIButton {
     
-    var hasArrow: Bool = true {
+    private let leftImageSize = 20.0
+    private let arrowImageSize = 12.0
+    private let spacing: CGFloat = 8.0
+    private let buttonHeight = 36.0
+    private var buttonWidth: Double?
+    var floatingWidth: Bool = true
+    
+    
+    private var hasArrow: Bool = true {
         didSet {
             if hasArrow == true {
                 rightImageView.isHidden = false
-                labelIsCenter = false
             } else {
                 rightImageView.isHidden = true
-                labelIsCenter = true
             }
         }
     }
     
-    var labelIsCenter = false
-
     let leftImageView = UIImageView()
     let rightImageView = UIImageView()
     
@@ -38,39 +42,7 @@ class ChoseAccountButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let spacing: CGFloat = 8
         
-        // Расположение правого изображения
-        if let rightImage = rightImage {
-            rightImageView.frame = CGRect(x: bounds.width - rightImage.size.width - spacing, y: bounds.height / 2 - rightImage.size.height / 2, width: rightImage.size.width, height: rightImage.size.height)
-        }
-        
-        // Расположение левого изображения
-        if let leftImage = leftImage {
-            let xCenter = bounds.width / 2 - (titleLabel?.intrinsicContentSize.width ?? 0) / 2 - leftImage.size.width / 2 - spacing / 2
-            let xRight = spacing
-            
-            leftImageView.frame = CGRect(
-                x: labelIsCenter ? xCenter : xRight,
-                y: bounds.height / 2 - leftImage.size.height / 2,
-                width: leftImage.size.width,
-                height: leftImage.size.height)
-        }
-        
-        // Расчет ширины текста и обновление размеров кнопки
-        if let titleLabel = titleLabel {
-            let totalWidth = leftImageView.frame.width + rightImageView.frame.width + spacing * 4 + titleLabel.intrinsicContentSize.width
-            if totalWidth > bounds.width {
-                bounds.size.width = totalWidth
-            }
-        }
-        
-        // Пересчет положения текста
-        if let textLabel = titleLabel {
-            let xOffsetCenter = (bounds.width - textLabel.frame.width) / 2 + (leftImage?.size.width ?? 0) / 2 + spacing / 2
-            let xOffsetRight = (leftImage?.size.width ?? 0) + spacing * 2
-            textLabel.frame.origin.x = labelIsCenter ? xOffsetCenter : xOffsetRight
-        }
     }
     
     override init(frame: CGRect) {
@@ -82,24 +54,79 @@ class ChoseAccountButton: UIButton {
         super.init(coder: aDecoder)
         setupButton()
     }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+    }
+    
+    override func setTitle(_ title: String?, for state: UIControl.State) {
+        var newTitle = title
+        
+        if let width = buttonWidth, let buttonText = title, let buttonFont = titleLabel?.font {
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: buttonFont
+            ]
+            
+            let textSize = (buttonText as NSString).size(withAttributes: attributes)
+            
+            let maxTitleWidth = width - spacing * 3 - (leftImage != nil ? leftImageView.frame.width + spacing : 0)
+            
+            if textSize.width > maxTitleWidth {
+                newTitle = buttonText.truncated(toWidth: maxTitleWidth, withFont: buttonFont)
+            }
+            
+            print (textSize.width, maxTitleWidth)
+        }
+        
+        super.setTitle(newTitle, for: state)
+    }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        
+        leftImageView.frame.size.width = leftImageSize
+        leftImageView.frame.size.height = leftImageSize
+        leftImageView.frame.origin.x = -leftImageSize - spacing
+        
+        titleLabel?.insertSubview(leftImageView, at: 0)
+        
+        rightImageView.frame.size.width = arrowImageSize
+        rightImageView.frame.size.height = arrowImageSize
+        rightImageView.frame.origin.x = self.bounds.width - arrowImageSize - spacing
+        rightImageView.frame.origin.y = (self.bounds.height / 2) - (arrowImageSize / 2)
+        
+    }
 
-    func setupButton() {
+    private func setupButton() {
         tintColor = .quaternarySystemFill
         setTitleColor(.black, for: .normal)
-        configuration?.cornerStyle = .capsule
-        sizeToFit()
-        configuration?.titleLineBreakMode = .byTruncatingTail
+        setTitleColor(.black, for: .highlighted)
         
-        rightImageView.image = rightImage
+        configuration?.cornerStyle = .capsule
         
         addSubview(leftImageView)
         addSubview(rightImageView)
         
-        leftImageView.translatesAutoresizingMaskIntoConstraints = false
-        rightImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-       
-
+        rightImageView.image = rightImage
+        updateButton()
+    }
+    
+    private func updateButton() {
+       configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: leftImageSize + spacing * 2, bottom: 8, trailing: hasArrow ? arrowImageSize + spacing * 2 : spacing)
+    }
+    
+    public func setLeftImage(leftImage: UIImage, tintColor: UIColor) {
+        self.leftImage = leftImage
+        self.leftImageView.tintColor = tintColor
+    }
+    
+    public func setRightArrow(_ hasArrow: Bool = true) {
+        self.hasArrow = hasArrow
+        updateButton()
+    }
+    
+    public func setButtonWidth(_ width: Double? = nil) {
+        self.buttonWidth = width
     }
     
 

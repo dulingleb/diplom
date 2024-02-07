@@ -23,7 +23,7 @@ class SaveButton: UIButton {
     private func setupButton() {
         setTitle("Save", for: .normal)
         
-        var configuration = UIButton.Configuration.filled() // there are several options to choose from instead of .plain()
+        var configuration = UIButton.Configuration.filled() 
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
         configuration.cornerStyle = .capsule
         self.configuration = configuration
@@ -32,8 +32,6 @@ class SaveButton: UIButton {
     }
 
     @objc private func saveTapped() {
-        
-        // Вызываем обратный вызов (closure) при нажатии на кнопку
         saveButtonAction?()
     }
 
