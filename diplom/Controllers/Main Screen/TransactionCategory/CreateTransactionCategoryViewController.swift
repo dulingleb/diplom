@@ -17,14 +17,25 @@ class CreateTransactionCategoryViewController: UIViewController, UITextFieldDele
     private var saveButtonConstraint: NSLayoutConstraint!
     
     private let iconView = AccountIconContainer()
-    private var iconName: String?
+    private var iconName: String = "wallet"
     private var iconColor: UIColor = .systemOrange
     
     var categoryCallback: ((TransactionCategory) -> Void)?
     var type: TransactionType
     
+    var category: TransactionCategory? = nil
+    
     init(type: TransactionType = .expense) {
         self.type = type
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(category: TransactionCategory, type: TransactionType = .expense) {
+        self.type = type
+        self.category = category
+        self.nameTF.text = category.name
+        self.iconName = category.iconName
+        self.iconColor = UIColor(hexString: category.iconColor)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,7 +72,7 @@ class CreateTransactionCategoryViewController: UIViewController, UITextFieldDele
         view.addSubview(nameTF)
         
         // Icon
-        iconView.configure(name: "wallet", color: self.iconColor)
+        iconView.configure(name: self.iconName, color: self.iconColor)
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openChooseIcon)))
         view.addSubview(iconView)
@@ -79,7 +90,7 @@ class CreateTransactionCategoryViewController: UIViewController, UITextFieldDele
         saveButtonConfig.cornerStyle = .capsule
         saveButton = UIButton(configuration: saveButtonConfig)
         saveButton.setTitle("Save", for: .normal)
-        saveButton.isEnabled = false
+        saveButton.isEnabled = category != nil
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(saveButton)
@@ -141,15 +152,24 @@ class CreateTransactionCategoryViewController: UIViewController, UITextFieldDele
     
     
     @objc func saveButtonTapped() {
-        let category = TransactionCategory()
-        category.name = self.nameTF.text ?? "New Category"
-        category.iconName = self.iconName ?? "wallet"
-        category.iconColor = self.iconColor.toHexString
-        category.type = self.type.rawValue
+        if category == nil {
+            category = TransactionCategory()
+            category?.name = self.nameTF.text ?? "New Category"
+            category?.iconName = self.iconName
+            category?.iconColor = self.iconColor.toHexString
+            category?.type = self.type.rawValue
+            
+            StorageManager.shared.addTransactionCategory(category: category!)
+        } else if let categoryId = category?._id {
+            StorageManager.shared.updateTransactionCategory(withId: categoryId) { category in
+                category.name = self.nameTF.text ?? "New Category"
+                category.iconName = self.iconName
+                category.iconColor = self.iconColor.toHexString
+                category.type = self.type.rawValue
+            }
+        }
         
-        StorageManager.shared.addTransactionCategory(category: category)
-        
-        self.categoryCallback?(category)
+        self.categoryCallback?(category!)
         dismiss(animated: true)
     }
     
@@ -167,6 +187,8 @@ class CreateTransactionCategoryViewController: UIViewController, UITextFieldDele
             
             navigationVC.sheetPresentationController?.preferredCornerRadius = 30
         }
+        
+        choseIconVC.setIcon(iconName: self.iconName, iconColor: self.iconColor)
         
         self.navigationController?.present(navigationVC, animated: true)
     }

@@ -235,8 +235,8 @@ class StatisticsViewController: UIViewController, MonthPickerViewDelegate, UICol
     
     func sortCategories() {
         categories.sort(by: { n1, n2 in
-            let c1: Double = n1.getTransactionsByMonth(date: filterDate).sum(ofProperty: "amount")
-            let c2: Double = n2.getTransactionsByMonth(date: filterDate).sum(ofProperty: "amount")
+            let c1: Double = n1.getTransactionsByMonth(date: filterDate).filter("account._id = %@", self.account._id).sum(ofProperty: "amount")
+            let c2: Double = n2.getTransactionsByMonth(date: filterDate).filter("account._id = %@", self.account._id).sum(ofProperty: "amount")
             return c1 > c2
         })
     }

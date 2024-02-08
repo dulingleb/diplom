@@ -109,6 +109,31 @@ final class StorageManager {
         }
     }
     
+    public func updateAcount(withId id: ObjectId, updates: (Account) -> Void) {
+        do {
+            guard let account = realm.object(ofType: Account.self, forPrimaryKey: id) else { return }
+
+            try realm.write {
+                updates(account)
+            }
+        } catch {
+            print("error updating account: \(error)")
+        }
+    }
+    
+    public func deleteAccount(_ account: Account) {
+        do {
+            try realm.write {
+                realm.delete(account)
+                
+                let unusedTransactions = realm.objects(Transaction.self).filter("account = nil")
+                realm.delete(unusedTransactions)
+            }
+        } catch {
+            print("error deleting transaction category: \(error)")
+        }
+    }
+    
     // Currency
     public func getCurrencies() -> Results<Currency> {
         return realm.objects(Currency.self)

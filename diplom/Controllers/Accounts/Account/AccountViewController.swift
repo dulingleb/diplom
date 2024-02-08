@@ -84,7 +84,7 @@ class AccountViewController: UIViewController, MonthPickerViewDelegate, UITableV
         balanceView.layer.cornerRadius = 20
         balanceView.translatesAutoresizingMaskIntoConstraints = false
         
-        balanceLabel.text = account.getCurrentBalance().withCommas() + " " + (account.currency?.symbol ?? "$")
+        balanceLabel.text = getCurrentBalance()
         balanceLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         balanceLabel.textAlignment = .center
         balanceLabel.adjustsFontSizeToFitWidth = true
@@ -193,10 +193,14 @@ class AccountViewController: UIViewController, MonthPickerViewDelegate, UITableV
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
             tableView.endUpdates()
+            
+            balanceLabel.text = getCurrentBalance()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let currentTransaction = self.sections[indexPath.section].transactions[indexPath.row]
         let editTransactionController = EditTransactionViewController(transaction: currentTransaction)
         let navigationVC = UINavigationController(rootViewController: editTransactionController)
@@ -216,6 +220,7 @@ class AccountViewController: UIViewController, MonthPickerViewDelegate, UITableV
         editTransactionController.onTransactionUpdate = { [weak self] transaction in
             guard let self = self else { return }
             self.loadTransactions()
+            balanceLabel.text = getCurrentBalance()
         }
         
         
@@ -242,6 +247,10 @@ class AccountViewController: UIViewController, MonthPickerViewDelegate, UITableV
         sections.sort(by: { $0.date < $1.date })
         
         tableView.reloadData()
+    }
+    
+    private func getCurrentBalance() -> String {
+        return account.getCurrentBalance().withCommas() + " " + (account.currency?.symbol ?? "$")
     }
 
     func didPickMonthYear(date: Date) {

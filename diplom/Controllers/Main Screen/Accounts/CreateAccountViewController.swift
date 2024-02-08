@@ -45,7 +45,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
     var accountCallback: ((Account) -> Void)?
     
     private let iconView = AccountIconContainer()
-    private var iconName: String?
+    private var iconName: String = "wallet"
     private var iconColor: UIColor = .systemOrange
     
     private var currency: Currency! {
@@ -58,6 +58,27 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
     }
     
     var settingModels = [SettingsOptionType]()
+    
+    var account: Account?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init (account: Account) {
+        self.account = account
+        self.currency = account.currency
+        self.iconColor = UIColor(hexString: account.iconColor)
+        self.iconName = account.iconName
+        self.balance = account.balance
+        self.accountNameTF.text = account.name
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 
     override func viewDidLoad() {
@@ -78,7 +99,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         
         
         let currencyCode = "USD"
-        if let currency = StorageManager.shared.getCurrencies().filter("code == %@", currencyCode).first {
+        if currency == nil, let currency = StorageManager.shared.getCurrencies().filter("code == %@", currencyCode).first {
             self.currency = currency
         } else {
             print("Валюта с кодом \(currencyCode) не найдена.")
@@ -101,7 +122,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         
         // Icon
         view.addSubview(iconView)
-        iconView.configure(name: "wallet", color: self.iconColor)
+        iconView.configure(name: self.iconName, color: self.iconColor)
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openChooseIcon)))
         
@@ -206,7 +227,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
-        saveButton.isEnabled = false
+        saveButton.isEnabled = self.account != nil
         
         // Кнопка закрытия
         let closeButtonContainer = CloseButtonContainer()
@@ -253,16 +274,26 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UITabl
     }
     
     @objc func saveButtonTapped() {
-        let account = Account()
-        account.name = accountNameTF.text ?? "New account"
-        account.currency = self.currency
-        account.iconName = self.iconName ?? "wallet"
-        account.iconColor = self.iconColor.toHexString
-        account.balance = Double(self.balance)
+        if account == nil {
+            account = Account()
+            account?.name = accountNameTF.text ?? "New account"
+            account?.currency = self.currency
+            account?.iconName = self.iconName
+            account?.iconColor = self.iconColor.toHexString
+            account?.balance = Double(self.balance)
+            
+            StorageManager.shared.addAccount(account!)
+        } else if let accountId = account?._id {
+            StorageManager.shared.updateAcount(withId: accountId) { account in
+                account.currency = self.currency
+                account.iconColor = self.iconColor.toHexString
+                account.name = self.accountNameTF.text ?? "New account"
+                account.iconName = self.iconName
+                account.balance = Double(self.balance)
+            }
+        }
         
-        StorageManager.shared.addAccount(account)
-        
-        accountCallback?(account)
+        accountCallback?(account!)
         dismiss(animated: true)
     }
     

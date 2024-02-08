@@ -9,12 +9,6 @@ import UIKit
 import RealmSwift
 import Toast
 
-struct ContextMenuItem {
-    var title: String = ""
-    var image: UIImage?
-    var handler: ((IndexPath) -> Void)?
-}
-
 class ChooseTransactionCategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var collectionView: UICollectionView!
@@ -44,6 +38,9 @@ class ChooseTransactionCategoryViewController: UIViewController, UICollectionVie
        contextMenuItems = [
             ContextMenuItem(title: "Remove", image: UIImage(named: "delete") ?? nil, handler: { indexPath in
                 self.removeCell(indexPath)
+            }),
+            ContextMenuItem(title: "Edit", image: UIImage(named: "edit") ?? nil, handler: { indexPath in
+                self.openCreateCategory(editCategory: self.transactionCategories?[indexPath.row - 1])
             })
         ]
 
@@ -103,22 +100,7 @@ class ChooseTransactionCategoryViewController: UIViewController, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let createCategoryVC = CreateTransactionCategoryViewController(type: self.type)
-            let navigationVC = UINavigationController(rootViewController: createCategoryVC)
-            
-            if let sheet = navigationVC.sheetPresentationController {
-                sheet.detents = [.large()]
-                
-                navigationVC.sheetPresentationController?.preferredCornerRadius = 30
-            }
-            
-            createCategoryVC.typeOfCategory = .expense
-            createCategoryVC.categoryCallback = { [weak self] category in
-                self?.transactionCategories?.append(category)
-                self?.collectionView.reloadData()
-            }
-            
-            navigationController?.present(navigationVC, animated: true)
+            openCreateCategory()
         } else {
 
             self.onCategorySelect?(transactionCategories![indexPath.item - 1])
@@ -132,6 +114,31 @@ class ChooseTransactionCategoryViewController: UIViewController, UICollectionVie
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
             return self.makeContextMenu(for: indexPath)
         })
+    }
+    
+    func openCreateCategory(editCategory: TransactionCategory? = nil) {
+        var createCategoryVC: CreateTransactionCategoryViewController!
+        if editCategory != nil {
+            createCategoryVC = CreateTransactionCategoryViewController(category: editCategory!, type: self.type)
+        } else {
+            createCategoryVC = CreateTransactionCategoryViewController(type: self.type)
+        }
+        
+        let navigationVC = UINavigationController(rootViewController: createCategoryVC)
+        
+        if let sheet = navigationVC.sheetPresentationController {
+            sheet.detents = [.large()]
+            
+            navigationVC.sheetPresentationController?.preferredCornerRadius = 30
+        }
+        
+        createCategoryVC.typeOfCategory = .expense
+        createCategoryVC.categoryCallback = { [weak self] category in
+            if editCategory == nil { self?.transactionCategories?.append(category) }
+            self?.collectionView.reloadData()
+        }
+        
+        navigationController?.present(navigationVC, animated: true)
     }
     
     func makeContextMenu(for indexPath: IndexPath) -> UIMenu {
@@ -150,7 +157,7 @@ class ChooseTransactionCategoryViewController: UIViewController, UICollectionVie
     private func removeCell(_ indexPath: IndexPath) {
         guard let itemToDelete = self.transactionCategories?[indexPath.row - 1] else { return }
 
-        if StorageManager.shared.getTransactionCategories().filter("type = %@", self.type.rawValue).isEmpty {
+        if StorageManager.shared.getTransactionCategories().filter("type = %@", self.type.rawValue).count == 1 {
             showAlert(title: "Warning!", message: "You can't remove the last category")
             return
         }
