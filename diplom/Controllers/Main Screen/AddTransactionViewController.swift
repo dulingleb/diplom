@@ -24,6 +24,7 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     
+    var amountPrefix: String = "$"
     var amount: Double = 0
     var amountString: String = "0" {
         didSet {
@@ -54,11 +55,28 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
             amountLabel.text = amountPrefix + amountString
         }
     }
-    var date: Date = Date()
-    var note: String?
+    var date: Date = Date() {
+        didSet {
+            let calendar = Calendar.current
+            if calendar.startOfDay(for: date) != calendar.startOfDay(for: Date()) {
+                calendarButton.tintColor = .systemBlue
+            } else {
+                calendarButton.tintColor = .black
+            }
+        }
+    }
+    var note: String? {
+        didSet {
+            if note == "" || note == nil {
+                commentButton.tintColor = .black
+            } else {
+                commentButton.tintColor = .systemBlue
+            }
+        }
+    }
     var transactionType: TransactionType = .expense
     
-    var amountPrefix: String = "$"
+    
     var account: Account? {
         didSet {
             choseAccountButton.setTitle(account?.name, for: .normal)
@@ -86,7 +104,7 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
         
         //UserDefaults.standard.set(false, forKey: "DataInitialized")
         DataInitializer.initializeDataIfNeeded()
-        print("User Realm User file location: \(Realm.Configuration.defaultConfiguration.fileURL)")
+        //print("User Realm User file location: \(Realm.Configuration.defaultConfiguration.fileURL)")
         
         keboardCollectionView.keyboardPadCollectionViewDelegate = self
         setupUI()
@@ -170,13 +188,6 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
         }
         calendarVC.onDateSelect = { [weak self] date in
             self?.date = date
-            
-            let calendar = Calendar.current
-            if calendar.startOfDay(for: date) != calendar.startOfDay(for: Date()) {
-                self?.calendarButton.tintColor = .systemBlue
-            } else {
-                self?.calendarButton.tintColor = .black
-            }
         }
         calendarVC.currentDate = self.date
         navigationController?.present(navigationVC, animated: true)
@@ -194,12 +205,6 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
         
         noteVC.noteOnChange = { [weak self] note in
             self?.note = note
-            
-            if note == nil || note?.count == 0 {
-                self?.commentButton.tintColor = .black
-            } else {
-                self?.commentButton.tintColor = .systemBlue
-            }
         }
         
         noteVC.setText(self.note)
@@ -225,7 +230,7 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
         }
         
         accountsVC.onAccountSelect = { [weak self] account in
-            self?.account = account
+            self?.account = account            
         }
         
         navigationController?.present(navigationVC, animated: true)
@@ -274,7 +279,7 @@ class AddTransactionViewController: UIViewController, KeyboardPadCollectionViewD
         transactionCategoriesVC.onCategorySelect = { [weak self] category in
             self?.storeTransaction(type: .expense, category: category)
             
-            UIApplication.shared.activeWindow?.rootViewController?.view.makeToast("Transaction is added", duration: 3.0, position: .top, style: UIApplication.shared.globalToastStyle)
+            UIApplication.shared.activeWindow?.rootViewController?.view.makeToast("✅ Transaction is added", duration: 3.0, position: .top, style: UIApplication.shared.globalToastStyle)
             
             self?.clear()
         }

@@ -19,7 +19,7 @@ class ChoseIconViewController: UIViewController, ColorCollectionViewDelegate, Ic
     private var saveButtonContainer = UIView()
     private var saveButton: UIButton!
     
-    private let iconView = AccountIconContainer()
+    let iconView = AccountIconContainer()
     private var iconName: String = "wallet" {
         didSet {
             iconView.configure(name: iconName, color: iconColor)
@@ -31,7 +31,7 @@ class ChoseIconViewController: UIViewController, ColorCollectionViewDelegate, Ic
             iconView.configure(name: iconName, color: iconColor)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,7 +84,10 @@ class ChoseIconViewController: UIViewController, ColorCollectionViewDelegate, Ic
         
         let icons = [
             IconSection(title: "Standart", icons: [
-                Icon(name: "wallet"), Icon(name: "banknote"), Icon(name: "accounts"), Icon(name: "briefcase"), Icon(name: "Barbell"), Icon(name: "Bathtub"), Icon(name: "FirstAid"), Icon(name: "HouseLine"), Icon(name: "Popcorn"), Icon(name: "Receipt"), Icon(name: "ShoppingCartSimple"), Icon(name: "Train"),
+                Icon(name: "Gift"), Icon(name: "ShoppingBag"), Icon(name: "Storefront"), Icon(name: "acounts"), Icon(name: "briefcase"), Icon(name: "Barbell"), Icon(name: "Bathtub"), Icon(name: "FirstAid"), Icon(name: "HouseLine"), Icon(name: "Popcorn"), Icon(name: "Receipt"), Icon(name: "ShoppingCartSimple"), Icon(name: "Train"),
+            ]),
+            IconSection(title: "Money", icons: [
+                Icon(name: "wallet"), Icon(name: "banknote"), Icon(name: "Cardholder"), Icon(name: "PiggyBank"), Icon(name: "Coin"), Icon(name: "CreditCard"), Icon(name: "CurrencyDollar"), Icon(name: "CurrencyEur"), Icon(name: "CurrencyBtc"),
             ]),
             IconSection(title: "Brands", icons: [
                 Icon(name: "AndroidLogo"), Icon(name: "AppleLogo"), Icon(name: "GithubLogo"), Icon(name: "PinterestLogo"), Icon(name: "SketchLogo"), Icon(name: "TwitterLogo"), Icon(name: "WhatsappLogo"), Icon(name: "WindowsLogo"), Icon(name: "YoutubeLogo"),
@@ -163,6 +166,11 @@ class ChoseIconViewController: UIViewController, ColorCollectionViewDelegate, Ic
         }
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButtonContainer)
+    }
+    
+    public func setIcon(iconName: String, iconColor: UIColor) {
+        self.iconName = iconName
+        self.iconColor = iconColor
     }
     
     func didSelectColor(_ color: UIColor) {
