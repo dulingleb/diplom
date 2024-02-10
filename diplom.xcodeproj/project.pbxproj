@@ -7,23 +7,148 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9664962C2B2DF997008AAFDD /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664962B2B2DF997008AAFDD /* String+Validation.swift */; };
+		967B475A2B58367100F7E61A /* AccountIconContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47592B58367100F7E61A /* AccountIconContainer.swift */; };
+		967B475C2B5837C400F7E61A /* AccountIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B475B2B5837C400F7E61A /* AccountIcon.swift */; };
+		967B47602B58529200F7E61A /* ChoseIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B475F2B58529200F7E61A /* ChoseIconViewController.swift */; };
+		967B47622B5875B100F7E61A /* ColorCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47612B5875B100F7E61A /* ColorCollectionViewDataSource.swift */; };
+		967B47652B5879C400F7E61A /* CollorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47642B5879C400F7E61A /* CollorCollectionViewCell.swift */; };
+		967B47682B59AA4800F7E61A /* IconCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47672B59AA4800F7E61A /* IconCollectionViewDataSource.swift */; };
+		967B476A2B59AC5100F7E61A /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47692B59AC5100F7E61A /* IconCollectionViewCell.swift */; };
+		967B476C2B59C6AD00F7E61A /* IconHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B476B2B59C6AD00F7E61A /* IconHeaderCollectionReusableView.swift */; };
+		967B47732B6005FE00F7E61A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 967B47722B6005FE00F7E61A /* Realm */; };
+		967B47752B6005FE00F7E61A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 967B47742B6005FE00F7E61A /* RealmSwift */; };
+		967B47772B65597400F7E61A /* String + Trancated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47762B65597400F7E61A /* String + Trancated.swift */; };
+		967B47792B68094600F7E61A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47782B68094600F7E61A /* CalendarViewController.swift */; };
+		967B477B2B684BDB00F7E61A /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B477A2B684BDB00F7E61A /* NoteViewController.swift */; };
+		967B477D2B69AE8A00F7E61A /* ChooseTransactionCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B477C2B69AE8A00F7E61A /* ChooseTransactionCategoryViewController.swift */; };
+		967B47802B69B53E00F7E61A /* TransactionCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B477F2B69B53E00F7E61A /* TransactionCategoryCollectionViewCell.swift */; };
+		967B47822B6AE9E100F7E61A /* CreateTransactionCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47812B6AE9E100F7E61A /* CreateTransactionCategoryViewController.swift */; };
+		967B47852B6C306600F7E61A /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47842B6C306600F7E61A /* AccountsViewController.swift */; };
+		967B47872B6C3D4E00F7E61A /* AccountsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47862B6C3D4E00F7E61A /* AccountsCollectionViewCell.swift */; };
+		967B478D2B6D01A000F7E61A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B478C2B6D01A000F7E61A /* AccountViewController.swift */; };
+		967B478F2B6D1F6A00F7E61A /* UIView + topBarHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B478E2B6D1F6A00F7E61A /* UIView + topBarHeight.swift */; };
+		967B47922B6E981C00F7E61A /* MonthYearSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47912B6E981C00F7E61A /* MonthYearSelector.swift */; };
+		967B47952B6EBF8D00F7E61A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 967B47942B6EBF8D00F7E61A /* Toast */; };
+		967B47972B6EC18500F7E61A /* UIApplication + activeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47962B6EC18500F7E61A /* UIApplication + activeWindow.swift */; };
+		967B47992B6ED58700F7E61A /* Date + Start End of Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47982B6ED58700F7E61A /* Date + Start End of Month.swift */; };
+		967B479B2B6ED98500F7E61A /* AccountTransactionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B479A2B6ED98500F7E61A /* AccountTransactionsTableViewCell.swift */; };
+		967B479D2B6EE66900F7E61A /* UILabel + StringWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B479C2B6EE66900F7E61A /* UILabel + StringWidth.swift */; };
+		967B479F2B716EC800F7E61A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B479E2B716EC800F7E61A /* StorageManager.swift */; };
+		967B47A12B7195C800F7E61A /* Double + NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47A02B7195C800F7E61A /* Double + NumberFormatting.swift */; };
+		967B47A32B726FE200F7E61A /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47A22B726FE200F7E61A /* EditTransactionViewController.swift */; };
+		967B47A62B7393E200F7E61A /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47A52B7393E100F7E61A /* StatisticsViewController.swift */; };
+		967B47A92B73979300F7E61A /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 967B47A82B73979300F7E61A /* DGCharts */; };
+		967B47AB2B73979300F7E61A /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 967B47AA2B73979300F7E61A /* DGChartsDynamic */; };
+		967B47AD2B73B35E00F7E61A /* StatisticCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47AC2B73B35E00F7E61A /* StatisticCategoriesCollectionViewCell.swift */; };
+		967B47B12B7432D900F7E61A /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47B02B7432D900F7E61A /* UIViewController + Alert.swift */; };
+		967B47B42B74F22100F7E61A /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B47B32B74F22100F7E61A /* ContextMenu.swift */; };
+		967F110F2B1E76C0000F244F /* KeyboardPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967F110E2B1E76C0000F244F /* KeyboardPadCollectionViewCell.swift */; };
+		967F11152B1E90E9000F244F /* KeyboardPadCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967F11142B1E90E9000F244F /* KeyboardPadCollectionView.swift */; };
+		968E12FE2B518D4A00A17A96 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E12FD2B518D4A00A17A96 /* Section.swift */; };
+		968E13002B518F0B00A17A96 /* SettingSwitchOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E12FF2B518F0B00A17A96 /* SettingSwitchOption.swift */; };
+		968E13022B518F7700A17A96 /* SettingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13012B518F7700A17A96 /* SettingOption.swift */; };
+		968E13042B518FC900A17A96 /* SettingNumberOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13032B518FC900A17A96 /* SettingNumberOption.swift */; };
+		968E13072B5195C600A17A96 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13062B5195C600A17A96 /* SettingTableViewCell.swift */; };
+		968E13092B52CF7800A17A96 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13082B52CF7800A17A96 /* SettingSwitchTableViewCell.swift */; };
+		968E130B2B52CF8800A17A96 /* SettingNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E130A2B52CF8800A17A96 /* SettingNumberTableViewCell.swift */; };
+		968E130D2B54524700A17A96 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E130C2B54524700A17A96 /* Transaction.swift */; };
+		968E130F2B5454C000A17A96 /* TransactionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E130E2B5454C000A17A96 /* TransactionCategory.swift */; };
+		968E13112B54617500A17A96 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13102B54617500A17A96 /* Currency.swift */; };
+		968E13132B547FC000A17A96 /* UIColor + HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13122B547FC000A17A96 /* UIColor + HexString.swift */; };
+		968E13152B55912700A17A96 /* DataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13142B55912600A17A96 /* DataInitializer.swift */; };
+		968E131C2B55C21E00A17A96 /* CurrenciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E131B2B55C21E00A17A96 /* CurrenciesTableViewController.swift */; };
+		968E131F2B55CDE700A17A96 /* CurrenciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E131E2B55CDE700A17A96 /* CurrenciesTableViewCell.swift */; };
+		968E13222B5709AC00A17A96 /* CloseButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968E13212B5709AC00A17A96 /* CloseButtonContainer.swift */; };
+		96D242082B4D7949007D3337 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D242072B4D7949007D3337 /* CreateAccountViewController.swift */; };
+		96D2420B2B4F0F90007D3337 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2420A2B4F0F90007D3337 /* CloseButton.swift */; };
+		96D2420D2B4F2F02007D3337 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2420C2B4F2F02007D3337 /* SaveButton.swift */; };
+		96D2420F2B4F44FA007D3337 /* UIImage + imageWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2420E2B4F44FA007D3337 /* UIImage + imageWithColor.swift */; };
 		96E122A22B095914001E7E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122A12B095914001E7E30 /* AppDelegate.swift */; };
 		96E122A42B095914001E7E30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122A32B095914001E7E30 /* SceneDelegate.swift */; };
-		96E122A62B095914001E7E30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122A52B095914001E7E30 /* ViewController.swift */; };
 		96E122A92B095914001E7E30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E122A72B095914001E7E30 /* Main.storyboard */; };
 		96E122AB2B095915001E7E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E122AA2B095915001E7E30 /* Assets.xcassets */; };
 		96E122AE2B095915001E7E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E122AC2B095915001E7E30 /* LaunchScreen.storyboard */; };
+		96E122C12B1520D4001E7E30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122C02B1520D4001E7E30 /* TabBarController.swift */; };
+		96E122C42B1532C5001E7E30 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122C32B1532C5001E7E30 /* AddTransactionViewController.swift */; };
+		96E122C82B15380B001E7E30 /* TransactionTypeSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122C72B15380B001E7E30 /* TransactionTypeSegmentController.swift */; };
+		96E122CC2B178D69001E7E30 /* ChoseAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E122CB2B178D69001E7E30 /* ChoseAccountButton.swift */; };
+		96F38A802B435AA100A142D5 /* String + NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F38A7F2B435AA100A142D5 /* String + NumberFormatting.swift */; };
+		96F38A842B48275400A142D5 /* ListAccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F38A832B48275400A142D5 /* ListAccountsController.swift */; };
+		96F38A862B48377200A142D5 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F38A852B48377200A142D5 /* Account.swift */; };
+		96F38A882B49B08100A142D5 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F38A872B49B08100A142D5 /* Image+Resize.swift */; };
+		96F38A8B2B49C76800A142D5 /* AccountListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F38A8A2B49C76800A142D5 /* AccountListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9664962B2B2DF997008AAFDD /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
+		967B47592B58367100F7E61A /* AccountIconContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIconContainer.swift; sourceTree = "<group>"; };
+		967B475B2B5837C400F7E61A /* AccountIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIcon.swift; sourceTree = "<group>"; };
+		967B475F2B58529200F7E61A /* ChoseIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseIconViewController.swift; sourceTree = "<group>"; };
+		967B47612B5875B100F7E61A /* ColorCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		967B47642B5879C400F7E61A /* CollorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollorCollectionViewCell.swift; sourceTree = "<group>"; };
+		967B47672B59AA4800F7E61A /* IconCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		967B47692B59AC5100F7E61A /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		967B476B2B59C6AD00F7E61A /* IconHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		967B47762B65597400F7E61A /* String + Trancated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Trancated.swift"; sourceTree = "<group>"; };
+		967B47782B68094600F7E61A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		967B477A2B684BDB00F7E61A /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		967B477C2B69AE8A00F7E61A /* ChooseTransactionCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTransactionCategoryViewController.swift; sourceTree = "<group>"; };
+		967B477F2B69B53E00F7E61A /* TransactionCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		967B47812B6AE9E100F7E61A /* CreateTransactionCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionCategoryViewController.swift; sourceTree = "<group>"; };
+		967B47842B6C306600F7E61A /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		967B47862B6C3D4E00F7E61A /* AccountsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCollectionViewCell.swift; sourceTree = "<group>"; };
+		967B478C2B6D01A000F7E61A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		967B478E2B6D1F6A00F7E61A /* UIView + topBarHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + topBarHeight.swift"; sourceTree = "<group>"; };
+		967B47912B6E981C00F7E61A /* MonthYearSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearSelector.swift; sourceTree = "<group>"; };
+		967B47962B6EC18500F7E61A /* UIApplication + activeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + activeWindow.swift"; sourceTree = "<group>"; };
+		967B47982B6ED58700F7E61A /* Date + Start End of Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Start End of Month.swift"; sourceTree = "<group>"; };
+		967B479A2B6ED98500F7E61A /* AccountTransactionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTransactionsTableViewCell.swift; sourceTree = "<group>"; };
+		967B479C2B6EE66900F7E61A /* UILabel + StringWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + StringWidth.swift"; sourceTree = "<group>"; };
+		967B479E2B716EC800F7E61A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		967B47A02B7195C800F7E61A /* Double + NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + NumberFormatting.swift"; sourceTree = "<group>"; };
+		967B47A22B726FE200F7E61A /* EditTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewController.swift; sourceTree = "<group>"; };
+		967B47A52B7393E100F7E61A /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		967B47AC2B73B35E00F7E61A /* StatisticCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		967B47B02B7432D900F7E61A /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
+		967B47B32B74F22100F7E61A /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
+		967F110E2B1E76C0000F244F /* KeyboardPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPadCollectionViewCell.swift; sourceTree = "<group>"; };
+		967F11142B1E90E9000F244F /* KeyboardPadCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPadCollectionView.swift; sourceTree = "<group>"; };
+		968E12FD2B518D4A00A17A96 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		968E12FF2B518F0B00A17A96 /* SettingSwitchOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchOption.swift; sourceTree = "<group>"; };
+		968E13012B518F7700A17A96 /* SettingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOption.swift; sourceTree = "<group>"; };
+		968E13032B518FC900A17A96 /* SettingNumberOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNumberOption.swift; sourceTree = "<group>"; };
+		968E13062B5195C600A17A96 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		968E13082B52CF7800A17A96 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		968E130A2B52CF8800A17A96 /* SettingNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNumberTableViewCell.swift; sourceTree = "<group>"; };
+		968E130C2B54524700A17A96 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		968E130E2B5454C000A17A96 /* TransactionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCategory.swift; sourceTree = "<group>"; };
+		968E13102B54617500A17A96 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		968E13122B547FC000A17A96 /* UIColor + HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + HexString.swift"; sourceTree = "<group>"; };
+		968E13142B55912600A17A96 /* DataInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInitializer.swift; sourceTree = "<group>"; };
+		968E131B2B55C21E00A17A96 /* CurrenciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableViewController.swift; sourceTree = "<group>"; };
+		968E131E2B55CDE700A17A96 /* CurrenciesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableViewCell.swift; sourceTree = "<group>"; };
+		968E13212B5709AC00A17A96 /* CloseButtonContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonContainer.swift; sourceTree = "<group>"; };
+		96D242072B4D7949007D3337 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		96D2420A2B4F0F90007D3337 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		96D2420C2B4F2F02007D3337 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		96D2420E2B4F44FA007D3337 /* UIImage + imageWithColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + imageWithColor.swift"; sourceTree = "<group>"; };
 		96E1229E2B095914001E7E30 /* diplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E122A12B095914001E7E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E122A32B095914001E7E30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		96E122A52B095914001E7E30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		96E122A82B095914001E7E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96E122AA2B095915001E7E30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96E122AD2B095915001E7E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96E122AF2B095915001E7E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96E122C02B1520D4001E7E30 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		96E122C32B1532C5001E7E30 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		96E122C72B15380B001E7E30 /* TransactionTypeSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTypeSegmentController.swift; sourceTree = "<group>"; };
+		96E122CB2B178D69001E7E30 /* ChoseAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseAccountButton.swift; sourceTree = "<group>"; };
+		96F38A7F2B435AA100A142D5 /* String + NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + NumberFormatting.swift"; sourceTree = "<group>"; };
+		96F38A832B48275400A142D5 /* ListAccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAccountsController.swift; sourceTree = "<group>"; };
+		96F38A852B48377200A142D5 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		96F38A872B49B08100A142D5 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
+		96F38A8A2B49C76800A142D5 /* AccountListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +156,215 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967B47A92B73979300F7E61A /* DGCharts in Frameworks */,
+				967B47952B6EBF8D00F7E61A /* Toast in Frameworks */,
+				967B47752B6005FE00F7E61A /* RealmSwift in Frameworks */,
+				967B47AB2B73979300F7E61A /* DGChartsDynamic in Frameworks */,
+				967B47732B6005FE00F7E61A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9664962A2B2DF97A008AAFDD /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				9664962B2B2DF997008AAFDD /* String+Validation.swift */,
+				96F38A7F2B435AA100A142D5 /* String + NumberFormatting.swift */,
+				96F38A872B49B08100A142D5 /* Image+Resize.swift */,
+				96D2420E2B4F44FA007D3337 /* UIImage + imageWithColor.swift */,
+				968E13122B547FC000A17A96 /* UIColor + HexString.swift */,
+				967B47762B65597400F7E61A /* String + Trancated.swift */,
+				967B478E2B6D1F6A00F7E61A /* UIView + topBarHeight.swift */,
+				967B47962B6EC18500F7E61A /* UIApplication + activeWindow.swift */,
+				967B47982B6ED58700F7E61A /* Date + Start End of Month.swift */,
+				967B479C2B6EE66900F7E61A /* UILabel + StringWidth.swift */,
+				967B47A02B7195C800F7E61A /* Double + NumberFormatting.swift */,
+				967B47B02B7432D900F7E61A /* UIViewController + Alert.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		967B47582B58365800F7E61A /* AccountIcon */ = {
+			isa = PBXGroup;
+			children = (
+				967B47592B58367100F7E61A /* AccountIconContainer.swift */,
+				967B475B2B5837C400F7E61A /* AccountIcon.swift */,
+			);
+			path = AccountIcon;
+			sourceTree = "<group>";
+		};
+		967B475D2B58522D00F7E61A /* ListOfAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				96F38A832B48275400A142D5 /* ListAccountsController.swift */,
+				96F38A8A2B49C76800A142D5 /* AccountListTableViewCell.swift */,
+			);
+			path = ListOfAccounts;
+			sourceTree = "<group>";
+		};
+		967B475E2B58527A00F7E61A /* ChoseIcon */ = {
+			isa = PBXGroup;
+			children = (
+				967B47632B5879A300F7E61A /* ColorCollection */,
+				967B47662B59A95000F7E61A /* IconCollection */,
+				967B475F2B58529200F7E61A /* ChoseIconViewController.swift */,
+			);
+			path = ChoseIcon;
+			sourceTree = "<group>";
+		};
+		967B47632B5879A300F7E61A /* ColorCollection */ = {
+			isa = PBXGroup;
+			children = (
+				967B47612B5875B100F7E61A /* ColorCollectionViewDataSource.swift */,
+				967B47642B5879C400F7E61A /* CollorCollectionViewCell.swift */,
+			);
+			path = ColorCollection;
+			sourceTree = "<group>";
+		};
+		967B47662B59A95000F7E61A /* IconCollection */ = {
+			isa = PBXGroup;
+			children = (
+				967B47672B59AA4800F7E61A /* IconCollectionViewDataSource.swift */,
+				967B47692B59AC5100F7E61A /* IconCollectionViewCell.swift */,
+				967B476B2B59C6AD00F7E61A /* IconHeaderCollectionReusableView.swift */,
+			);
+			path = IconCollection;
+			sourceTree = "<group>";
+		};
+		967B477E2B69B50000F7E61A /* TransactionCategory */ = {
+			isa = PBXGroup;
+			children = (
+				967B477C2B69AE8A00F7E61A /* ChooseTransactionCategoryViewController.swift */,
+				967B477F2B69B53E00F7E61A /* TransactionCategoryCollectionViewCell.swift */,
+				967B47812B6AE9E100F7E61A /* CreateTransactionCategoryViewController.swift */,
+			);
+			path = TransactionCategory;
+			sourceTree = "<group>";
+		};
+		967B47832B6C304900F7E61A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				967B478B2B6D017D00F7E61A /* Account */,
+				967B478A2B6D016C00F7E61A /* Accounts list */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		967B478A2B6D016C00F7E61A /* Accounts list */ = {
+			isa = PBXGroup;
+			children = (
+				967B47842B6C306600F7E61A /* AccountsViewController.swift */,
+				967B47862B6C3D4E00F7E61A /* AccountsCollectionViewCell.swift */,
+			);
+			path = "Accounts list";
+			sourceTree = "<group>";
+		};
+		967B478B2B6D017D00F7E61A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				967B478C2B6D01A000F7E61A /* AccountViewController.swift */,
+				967B479A2B6ED98500F7E61A /* AccountTransactionsTableViewCell.swift */,
+				967B47A22B726FE200F7E61A /* EditTransactionViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		967B47902B6E97C700F7E61A /* MonthPicker */ = {
+			isa = PBXGroup;
+			children = (
+				967B47912B6E981C00F7E61A /* MonthYearSelector.swift */,
+			);
+			path = MonthPicker;
+			sourceTree = "<group>";
+		};
+		967B47A42B7393CE00F7E61A /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				967B47A52B7393E100F7E61A /* StatisticsViewController.swift */,
+				967B47AC2B73B35E00F7E61A /* StatisticCategoriesCollectionViewCell.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		967B47B22B74F21400F7E61A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				968E12FC2B518D1E00A17A96 /* SettingTable */,
+				967B47B32B74F22100F7E61A /* ContextMenu.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		967F110D2B1E7691000F244F /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				967F110E2B1E76C0000F244F /* KeyboardPadCollectionViewCell.swift */,
+				967F11142B1E90E9000F244F /* KeyboardPadCollectionView.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		968E12FC2B518D1E00A17A96 /* SettingTable */ = {
+			isa = PBXGroup;
+			children = (
+				968E12FD2B518D4A00A17A96 /* Section.swift */,
+				968E12FF2B518F0B00A17A96 /* SettingSwitchOption.swift */,
+				968E13012B518F7700A17A96 /* SettingOption.swift */,
+				968E13032B518FC900A17A96 /* SettingNumberOption.swift */,
+			);
+			path = SettingTable;
+			sourceTree = "<group>";
+		};
+		968E13052B51957F00A17A96 /* SettingTable */ = {
+			isa = PBXGroup;
+			children = (
+				968E13062B5195C600A17A96 /* SettingTableViewCell.swift */,
+				968E13082B52CF7800A17A96 /* SettingSwitchTableViewCell.swift */,
+				968E130A2B52CF8800A17A96 /* SettingNumberTableViewCell.swift */,
+			);
+			path = SettingTable;
+			sourceTree = "<group>";
+		};
+		968E131D2B55CDC700A17A96 /* Currenciestable */ = {
+			isa = PBXGroup;
+			children = (
+				968E131B2B55C21E00A17A96 /* CurrenciesTableViewController.swift */,
+				968E131E2B55CDE700A17A96 /* CurrenciesTableViewCell.swift */,
+			);
+			path = Currenciestable;
+			sourceTree = "<group>";
+		};
+		968E13202B57099100A17A96 /* Close Button In Nav */ = {
+			isa = PBXGroup;
+			children = (
+				96D2420A2B4F0F90007D3337 /* CloseButton.swift */,
+				968E13212B5709AC00A17A96 /* CloseButtonContainer.swift */,
+			);
+			path = "Close Button In Nav";
+			sourceTree = "<group>";
+		};
+		968E13232B57129300A17A96 /* Save Button In Nav */ = {
+			isa = PBXGroup;
+			children = (
+				96D2420C2B4F2F02007D3337 /* SaveButton.swift */,
+			);
+			path = "Save Button In Nav";
+			sourceTree = "<group>";
+		};
+		96D242092B4F0F58007D3337 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				967B47902B6E97C700F7E61A /* MonthPicker */,
+				967B47582B58365800F7E61A /* AccountIcon */,
+				968E13052B51957F00A17A96 /* SettingTable */,
+				968E13202B57099100A17A96 /* Close Button In Nav */,
+				968E13232B57129300A17A96 /* Save Button In Nav */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		96E122952B095914001E7E30 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +384,109 @@
 		96E122A02B095914001E7E30 /* diplom */ = {
 			isa = PBXGroup;
 			children = (
-				96E122A12B095914001E7E30 /* AppDelegate.swift */,
-				96E122A32B095914001E7E30 /* SceneDelegate.swift */,
-				96E122A52B095914001E7E30 /* ViewController.swift */,
-				96E122A72B095914001E7E30 /* Main.storyboard */,
-				96E122AA2B095915001E7E30 /* Assets.xcassets */,
-				96E122AC2B095915001E7E30 /* LaunchScreen.storyboard */,
+				9664962A2B2DF97A008AAFDD /* Extentions */,
+				96E122BA2B095A56001E7E30 /* Models */,
+				96E122B92B095985001E7E30 /* Managers */,
+				96E122B72B09595D001E7E30 /* Controllers */,
+				96E122B82B095969001E7E30 /* Views */,
+				96E122B62B09593E001E7E30 /* Assets */,
+				96E122B52B09592C001E7E30 /* App */,
 				96E122AF2B095915001E7E30 /* Info.plist */,
 			);
 			path = diplom;
+			sourceTree = "<group>";
+		};
+		96E122B52B09592C001E7E30 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				96E122A12B095914001E7E30 /* AppDelegate.swift */,
+				96E122A32B095914001E7E30 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		96E122B62B09593E001E7E30 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				96E122AA2B095915001E7E30 /* Assets.xcassets */,
+				96E122AC2B095915001E7E30 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		96E122B72B09595D001E7E30 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				967B47A42B7393CE00F7E61A /* Statistics */,
+				967B47832B6C304900F7E61A /* Accounts */,
+				96E122C62B153792001E7E30 /* Main Screen */,
+				96D242092B4F0F58007D3337 /* Elements */,
+				96E122C02B1520D4001E7E30 /* TabBarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		96E122B82B095969001E7E30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96E122C22B15211D001E7E30 /* Numeric pad */,
+				96E122A72B095914001E7E30 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96E122B92B095985001E7E30 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				967B479E2B716EC800F7E61A /* StorageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		96E122BA2B095A56001E7E30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				967B47B22B74F21400F7E61A /* Settings */,
+				968E13102B54617500A17A96 /* Currency.swift */,
+				96F38A852B48377200A142D5 /* Account.swift */,
+				968E130C2B54524700A17A96 /* Transaction.swift */,
+				968E130E2B5454C000A17A96 /* TransactionCategory.swift */,
+				968E13142B55912600A17A96 /* DataInitializer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96E122C22B15211D001E7E30 /* Numeric pad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Numeric pad";
+			sourceTree = "<group>";
+		};
+		96E122C62B153792001E7E30 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				967B477E2B69B50000F7E61A /* TransactionCategory */,
+				967F110D2B1E7691000F244F /* Keyboard */,
+				96F38A892B49C72800A142D5 /* Accounts */,
+				96E122C32B1532C5001E7E30 /* AddTransactionViewController.swift */,
+				96E122C72B15380B001E7E30 /* TransactionTypeSegmentController.swift */,
+				96E122CB2B178D69001E7E30 /* ChoseAccountButton.swift */,
+				967B47782B68094600F7E61A /* CalendarViewController.swift */,
+				967B477A2B684BDB00F7E61A /* NoteViewController.swift */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		96F38A892B49C72800A142D5 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				967B475E2B58527A00F7E61A /* ChoseIcon */,
+				968E131D2B55CDC700A17A96 /* Currenciestable */,
+				967B475D2B58522D00F7E61A /* ListOfAccounts */,
+				96D242072B4D7949007D3337 /* CreateAccountViewController.swift */,
+			);
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +505,13 @@
 			dependencies = (
 			);
 			name = diplom;
+			packageProductDependencies = (
+				967B47722B6005FE00F7E61A /* Realm */,
+				967B47742B6005FE00F7E61A /* RealmSwift */,
+				967B47942B6EBF8D00F7E61A /* Toast */,
+				967B47A82B73979300F7E61A /* DGCharts */,
+				967B47AA2B73979300F7E61A /* DGChartsDynamic */,
+			);
 			productName = diplom;
 			productReference = 96E1229E2B095914001E7E30 /* diplom.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +540,11 @@
 				Base,
 			);
 			mainGroup = 96E122952B095914001E7E30;
+			packageReferences = (
+				967B47712B6005FE00F7E61A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				967B47932B6EBF8C00F7E61A /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				967B47A72B73979300F7E61A /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 96E1229F2B095914001E7E30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +572,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96E122A62B095914001E7E30 /* ViewController.swift in Sources */,
+				967B47682B59AA4800F7E61A /* IconCollectionViewDataSource.swift in Sources */,
+				967B47802B69B53E00F7E61A /* TransactionCategoryCollectionViewCell.swift in Sources */,
+				96D242082B4D7949007D3337 /* CreateAccountViewController.swift in Sources */,
+				967B47622B5875B100F7E61A /* ColorCollectionViewDataSource.swift in Sources */,
+				967B47A12B7195C800F7E61A /* Double + NumberFormatting.swift in Sources */,
+				967B47972B6EC18500F7E61A /* UIApplication + activeWindow.swift in Sources */,
+				967B479F2B716EC800F7E61A /* StorageManager.swift in Sources */,
+				967B47872B6C3D4E00F7E61A /* AccountsCollectionViewCell.swift in Sources */,
+				967B47602B58529200F7E61A /* ChoseIconViewController.swift in Sources */,
+				96D2420F2B4F44FA007D3337 /* UIImage + imageWithColor.swift in Sources */,
+				967B47A62B7393E200F7E61A /* StatisticsViewController.swift in Sources */,
+				968E13022B518F7700A17A96 /* SettingOption.swift in Sources */,
+				967B478D2B6D01A000F7E61A /* AccountViewController.swift in Sources */,
+				967B479B2B6ED98500F7E61A /* AccountTransactionsTableViewCell.swift in Sources */,
+				9664962C2B2DF997008AAFDD /* String+Validation.swift in Sources */,
+				968E131C2B55C21E00A17A96 /* CurrenciesTableViewController.swift in Sources */,
+				96F38A8B2B49C76800A142D5 /* AccountListTableViewCell.swift in Sources */,
+				967B47992B6ED58700F7E61A /* Date + Start End of Month.swift in Sources */,
+				967B476A2B59AC5100F7E61A /* IconCollectionViewCell.swift in Sources */,
+				968E13072B5195C600A17A96 /* SettingTableViewCell.swift in Sources */,
 				96E122A22B095914001E7E30 /* AppDelegate.swift in Sources */,
+				968E13002B518F0B00A17A96 /* SettingSwitchOption.swift in Sources */,
+				967B477B2B684BDB00F7E61A /* NoteViewController.swift in Sources */,
+				967B47B12B7432D900F7E61A /* UIViewController + Alert.swift in Sources */,
+				967B476C2B59C6AD00F7E61A /* IconHeaderCollectionReusableView.swift in Sources */,
+				96E122C12B1520D4001E7E30 /* TabBarController.swift in Sources */,
+				968E12FE2B518D4A00A17A96 /* Section.swift in Sources */,
+				96E122CC2B178D69001E7E30 /* ChoseAccountButton.swift in Sources */,
+				967F110F2B1E76C0000F244F /* KeyboardPadCollectionViewCell.swift in Sources */,
+				968E13112B54617500A17A96 /* Currency.swift in Sources */,
+				968E13092B52CF7800A17A96 /* SettingSwitchTableViewCell.swift in Sources */,
+				96F38A862B48377200A142D5 /* Account.swift in Sources */,
+				96F38A802B435AA100A142D5 /* String + NumberFormatting.swift in Sources */,
+				968E13042B518FC900A17A96 /* SettingNumberOption.swift in Sources */,
+				967B478F2B6D1F6A00F7E61A /* UIView + topBarHeight.swift in Sources */,
+				967B475A2B58367100F7E61A /* AccountIconContainer.swift in Sources */,
+				96E122C82B15380B001E7E30 /* TransactionTypeSegmentController.swift in Sources */,
+				967B47652B5879C400F7E61A /* CollorCollectionViewCell.swift in Sources */,
+				968E130F2B5454C000A17A96 /* TransactionCategory.swift in Sources */,
+				967B47822B6AE9E100F7E61A /* CreateTransactionCategoryViewController.swift in Sources */,
+				967B477D2B69AE8A00F7E61A /* ChooseTransactionCategoryViewController.swift in Sources */,
+				96F38A882B49B08100A142D5 /* Image+Resize.swift in Sources */,
+				967B475C2B5837C400F7E61A /* AccountIcon.swift in Sources */,
+				968E130D2B54524700A17A96 /* Transaction.swift in Sources */,
+				967B479D2B6EE66900F7E61A /* UILabel + StringWidth.swift in Sources */,
+				96D2420D2B4F2F02007D3337 /* SaveButton.swift in Sources */,
+				96F38A842B48275400A142D5 /* ListAccountsController.swift in Sources */,
+				968E13132B547FC000A17A96 /* UIColor + HexString.swift in Sources */,
+				968E13152B55912700A17A96 /* DataInitializer.swift in Sources */,
+				967B47922B6E981C00F7E61A /* MonthYearSelector.swift in Sources */,
+				967B47772B65597400F7E61A /* String + Trancated.swift in Sources */,
+				967B47852B6C306600F7E61A /* AccountsViewController.swift in Sources */,
+				967B47792B68094600F7E61A /* CalendarViewController.swift in Sources */,
+				967F11152B1E90E9000F244F /* KeyboardPadCollectionView.swift in Sources */,
+				968E130B2B52CF8800A17A96 /* SettingNumberTableViewCell.swift in Sources */,
+				967B47AD2B73B35E00F7E61A /* StatisticCategoriesCollectionViewCell.swift in Sources */,
+				968E131F2B55CDE700A17A96 /* CurrenciesTableViewCell.swift in Sources */,
+				968E13222B5709AC00A17A96 /* CloseButtonContainer.swift in Sources */,
+				967B47B42B74F22100F7E61A /* ContextMenu.swift in Sources */,
 				96E122A42B095914001E7E30 /* SceneDelegate.swift in Sources */,
+				967B47A32B726FE200F7E61A /* EditTransactionViewController.swift in Sources */,
+				96D2420B2B4F0F90007D3337 /* CloseButton.swift in Sources */,
+				96E122C42B1532C5001E7E30 /* AddTransactionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +794,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +823,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,6 +859,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		967B47712B6005FE00F7E61A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		967B47932B6EBF8C00F7E61A /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		967B47A72B73979300F7E61A /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		967B47722B6005FE00F7E61A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B47712B6005FE00F7E61A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		967B47742B6005FE00F7E61A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B47712B6005FE00F7E61A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		967B47942B6EBF8D00F7E61A /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B47932B6EBF8C00F7E61A /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		967B47A82B73979300F7E61A /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B47A72B73979300F7E61A /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		967B47AA2B73979300F7E61A /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B47A72B73979300F7E61A /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 96E122962B095914001E7E30 /* Project object */;
 }

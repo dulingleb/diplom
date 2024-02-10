@@ -1,24 +1,282 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gi1-NS-r1s">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="O79-w8-gtl">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="gi1-NS-r1s" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iOs-w9-VGO">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="76C-pn-ETA">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="lZE-jK-yC5" kind="relationship" relationship="rootViewController" id="RB2-fH-lJt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJs-MP-0tZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1300" y="-19"/>
+        </scene>
+        <!--Accounts-->
+        <scene sceneID="hui-3P-lA4">
+            <objects>
+                <viewController title="Accounts" id="SMa-ds-iGW" customClass="AccountsViewController" customModule="diplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dea-9J-aLM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Obw-RC-6fo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="acounts" id="tDg-Yp-vwp"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4a9-Sy-w5x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="275.57251908396944" y="-339.43661971830988"/>
+        </scene>
+        <!--Add Transaction View Controller-->
+        <scene sceneID="Dls-p9-GYf">
+            <objects>
+                <viewController id="tdt-2l-eO3" customClass="AddTransactionViewController" customModule="diplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9PE-xh-4T9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qqe-uW-hfi" customClass="TransactionTypeSegmentController" customModule="diplom" customModuleProvider="target">
+                                <rect key="frame" x="36" y="224" width="321" height="32"/>
+                                <segments>
+                                    <segment title="Expense"/>
+                                    <segment title="Income"/>
+                                </segments>
+                                <connections>
+                                    <action selector="typeTransactionSegmentChange:" destination="tdt-2l-eO3" eventType="valueChanged" id="bSZ-ak-Ufa"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="35" translatesAutoresizingMaskIntoConstraints="NO" id="TI5-tc-HhH">
+                                <rect key="frame" x="36" y="291" width="321" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="dYK-hM-aMp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="70"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VRV-4c-ffR">
+                                <rect key="frame" x="36" y="411" width="321" height="14"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUu-no-TdJ" customClass="ChoseAccountButton" customModule="diplom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-8.6666666666666856" width="0.0" height="31.666666666666668"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="button">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="15" name="SFPro-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chooseIncomeCategoryButtonClick:" destination="tdt-2l-eO3" eventType="touchUpInside" id="d2O-YN-Hbp"/>
+                                        </connections>
+                                    </button>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GiH-c9-ktS">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="14.666666666666664"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XS7-xA-iim" customClass="ChoseAccountButton" customModule="diplom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="14"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="" cornerStyle="capsule"/>
+                                        <connections>
+                                            <action selector="choseAccountButtonClick:" destination="tdt-2l-eO3" eventType="touchUpInside" id="Bdf-Gn-bgI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JJY-3i-xmf" customClass="KeyboardPadCollectionView" customModule="diplom" customModuleProvider="target">
+                                <rect key="frame" x="28" y="453" width="337" height="218"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="218" id="SKj-un-jPy"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="rAj-bx-gXm">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Qhg-cL-r8b" customClass="KeyboardPadCollectionViewCell" customModule="diplom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-8D-iFT">
+                                <rect key="frame" x="36" y="691" width="321" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-e8-JSy" userLabel="Calendar Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="fvU-66-nLw"/>
+                                            <constraint firstAttribute="width" constant="50" id="sCO-2m-Cft"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" image="Calendar" cornerStyle="capsule"/>
+                                        <connections>
+                                            <action selector="calendarButtonClick:" destination="tdt-2l-eO3" eventType="touchUpInside" id="lsJ-ox-evv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bG-1v-mGK">
+                                        <rect key="frame" x="60" y="0.0" width="201" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Add">
+                                                    <attributes>
+                                                        <font key="NSFont" size="17" name="SFPro-Semibold"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addTransactionButtonClick:" destination="tdt-2l-eO3" eventType="touchUpInside" id="mx6-xs-M5s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmN-Ti-sNf" userLabel="Comment Button">
+                                        <rect key="frame" x="271" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="k12-vW-t66"/>
+                                            <constraint firstAttribute="height" constant="50" id="yI2-mC-ALr"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" image="edit" cornerStyle="capsule"/>
+                                        <connections>
+                                            <action selector="noteButtonClick:" destination="tdt-2l-eO3" eventType="touchUpInside" id="6Ax-qT-vdp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VNx-za-alx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gXM-rb-lC2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Qqe-uW-hfi" firstAttribute="leading" secondItem="gXM-rb-lC2" secondAttribute="leading" constant="36" id="4Dc-I1-JJi"/>
+                            <constraint firstItem="bqL-8D-iFT" firstAttribute="bottom" secondItem="gXM-rb-lC2" secondAttribute="bottom" constant="-28" id="7vA-Mh-IRd"/>
+                            <constraint firstItem="VRV-4c-ffR" firstAttribute="leading" secondItem="gXM-rb-lC2" secondAttribute="leading" constant="36" id="DoZ-bI-jZo"/>
+                            <constraint firstItem="gXM-rb-lC2" firstAttribute="trailing" secondItem="TI5-tc-HhH" secondAttribute="trailing" constant="36" id="M9s-N4-PSe"/>
+                            <constraint firstItem="gXM-rb-lC2" firstAttribute="trailing" secondItem="bqL-8D-iFT" secondAttribute="trailing" constant="36" id="SQC-Ix-xR0"/>
+                            <constraint firstItem="gXM-rb-lC2" firstAttribute="trailing" secondItem="JJY-3i-xmf" secondAttribute="trailing" constant="28" id="T0d-pO-Gqk"/>
+                            <constraint firstItem="JJY-3i-xmf" firstAttribute="top" secondItem="VRV-4c-ffR" secondAttribute="bottom" constant="28" id="ZBQ-hD-A95"/>
+                            <constraint firstItem="gXM-rb-lC2" firstAttribute="trailing" secondItem="Qqe-uW-hfi" secondAttribute="trailing" constant="36" id="aUD-HI-aPH"/>
+                            <constraint firstItem="VRV-4c-ffR" firstAttribute="top" secondItem="TI5-tc-HhH" secondAttribute="bottom" constant="36" id="b7M-oE-On9"/>
+                            <constraint firstItem="bqL-8D-iFT" firstAttribute="top" secondItem="JJY-3i-xmf" secondAttribute="bottom" constant="20" id="jcm-0l-Q5F"/>
+                            <constraint firstItem="bqL-8D-iFT" firstAttribute="leading" secondItem="gXM-rb-lC2" secondAttribute="leading" constant="36" id="n4P-nZ-sww"/>
+                            <constraint firstItem="TI5-tc-HhH" firstAttribute="leading" secondItem="gXM-rb-lC2" secondAttribute="leading" constant="36" id="pjb-19-xLw"/>
+                            <constraint firstItem="TI5-tc-HhH" firstAttribute="top" secondItem="Qqe-uW-hfi" secondAttribute="bottom" constant="36" id="rvH-N4-qWd"/>
+                            <constraint firstItem="gXM-rb-lC2" firstAttribute="trailing" secondItem="VRV-4c-ffR" secondAttribute="trailing" constant="36" id="t5E-BK-XOo"/>
+                            <constraint firstItem="JJY-3i-xmf" firstAttribute="leading" secondItem="gXM-rb-lC2" secondAttribute="leading" constant="28" id="tql-YQ-xFp"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="home" id="r0x-gv-3uM"/>
+                    <connections>
+                        <outlet property="accountButtonsView" destination="VRV-4c-ffR" id="vn3-Uh-COp"/>
+                        <outlet property="addTransactionButton" destination="5bG-1v-mGK" id="NrP-Bb-e5o"/>
+                        <outlet property="amountLabel" destination="TI5-tc-HhH" id="FkF-O6-dV8"/>
+                        <outlet property="arrowImage" destination="GiH-c9-ktS" id="kqJ-50-Hl9"/>
+                        <outlet property="calendarButton" destination="ZCF-e8-JSy" id="80a-zk-Mqb"/>
+                        <outlet property="choseAccountButton" destination="XS7-xA-iim" id="xlE-c9-St3"/>
+                        <outlet property="choseIncomeCattegoryButton" destination="WUu-no-TdJ" id="AsY-zY-mU1"/>
+                        <outlet property="commentButton" destination="KmN-Ti-sNf" id="ANF-N9-WbK"/>
+                        <outlet property="keboardCollectionView" destination="JJY-3i-xmf" id="0tx-U6-wBl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yn1-5m-Qbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="-1008"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="mjv-AM-NS4">
+            <objects>
+                <tabBarController id="lZE-jK-yC5" customClass="MainTabBarController" customModule="diplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6oA-m3-yNN"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lfs-he-sz6">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tdt-2l-eO3" kind="relationship" relationship="viewControllers" id="43n-UI-911"/>
+                        <segue destination="SMa-ds-iGW" kind="relationship" relationship="viewControllers" id="GXa-Pc-xjt"/>
+                        <segue destination="Vdj-dQ-iYh" kind="relationship" relationship="viewControllers" id="zJl-ZA-0CD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doZ-H4-62I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-498" y="-19"/>
+        </scene>
+        <!--Statistics View Controller-->
+        <scene sceneID="PVf-FL-xsf">
+            <objects>
+                <viewController id="Vdj-dQ-iYh" customClass="StatisticsViewController" customModule="diplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G8d-ce-gdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WVC-8j-SgW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="statistics" id="aT0-xE-Lup"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naC-tU-R6y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="315"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="WUu-no-TdJ">
+            <size key="intrinsicContentSize" width="67.666666666666671" height="31.666666666666668"/>
+        </designable>
+        <designable name="XS7-xA-iim">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="Calendar" width="24" height="24"/>
+        <image name="acounts" width="26" height="26"/>
+        <image name="arrow.right" catalog="system" width="128" height="95"/>
+        <image name="edit" width="24" height="24"/>
+        <image name="home" width="26" height="26"/>
+        <image name="statistics" width="26" height="26"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
